@@ -2,7 +2,6 @@ import json
 
 category = ['Aventure','Animals','Love','Sci-Fi','Nature','Pirate','Emotions']
 myWordsDict = {}
-itemDict = {"word":"", "category": {}}
 
 with open('resources/english-words.txt', 'r') as fileToRead :
     data = fileToRead.readlines()
@@ -19,7 +18,6 @@ with open('resources/english-words.txt', 'r') as fileToRead :
                 categoryFlag = -1
             if word in myWordsDict :
                 myWordsDict[word].update({category[categoryIndex]: True})
-                print(max(myWordsDict[word], key=int))
             else :
                 myWordsDict[word] = {category[categoryIndex]: True}
 
@@ -28,8 +26,9 @@ print(len(myWordsDict.keys()))
 with open('resources/en-words.json', 'w') as fileToWrite :
     fileToWrite.write('[')
     for key in myWordsDict.keys() :
+        itemDict = {"word":"", "category": {'Aventure': False,'Animals': False,'Love': False,'Sci-Fi': False,'Nature': False,'Pirate': False,'Emotions': False}}
         itemDict["word"]=key
-        itemDict["category"]=myWordsDict[key]
+        itemDict["category"].update(myWordsDict[key])
         json.dump(itemDict, fileToWrite, sort_keys=True, indent=4)
         fileToWrite.write(',\n')
     fileToWrite.write(']')
