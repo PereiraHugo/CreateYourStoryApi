@@ -4,7 +4,7 @@ category = ['Aventure','Animals','Love','Sci-Fi','Nature','Pirate','Emotions']
 myWordsDict = {}
 itemDict = {"word":"", "category": {}}
 
-with open('English-Words.txt', 'r') as fileToRead :
+with open('resources/english-words.txt', 'r') as fileToRead :
     data = fileToRead.readlines()
     categoryFlag = -1
     categoryIndex = -1
@@ -18,14 +18,14 @@ with open('English-Words.txt', 'r') as fileToRead :
             elif word[0]=="Z" and categoryFlag==0:
                 categoryFlag = -1
             if word in myWordsDict :
-                myWordsDict[word].update({max(myWordsDict[word], key=int)+1 :category[categoryIndex]})
+                myWordsDict[word].update({category[categoryIndex]: True})
                 print(max(myWordsDict[word], key=int))
             else :
-                myWordsDict[word] = {0:category[categoryIndex]}
+                myWordsDict[word] = {category[categoryIndex]: True}
 
 print(len(myWordsDict.keys()))
 
-with open('Words.json', 'w') as fileToWrite :
+with open('resources/en-words.json', 'w') as fileToWrite :
     fileToWrite.write('[')
     for key in myWordsDict.keys() :
         itemDict["word"]=key
