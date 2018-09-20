@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Connect to DB
-var configDB = require('./config/database.js');
+//var configDB = require('./config/database.js');
 
 mongoose.connect("mongodb://127.0.0.1:27017/Words");
 const db = mongoose.connection;

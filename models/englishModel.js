@@ -4,10 +4,10 @@ var mongoose = require('mongoose');
 //Define a schema
 var Schema = mongoose.Schema;
 
-var English = new Schema({
+var english = new Schema({
     word: String,
     category: JSON
-},{ collection : 'English' });
+},{ collection : 'english' });
 
-module.exports = mongoose.model('English', English);
+module.exports = mongoose.model('english', english);
 
