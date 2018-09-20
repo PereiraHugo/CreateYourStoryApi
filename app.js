@@ -6,11 +6,14 @@ const mongoose = require('mongoose')
 
 app.use(cors())
 
-var bodyParser = require("body-parser");
 var routes = require("./routes/routes.js");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//var bodyParser = require("body-parser");
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 //Connect to DB
 //var configDB = require('./config/database.js');
@@ -32,5 +35,5 @@ routes(app);
 const port = process.env.PORT || 3000; //env variable PORT if not define use 3000.
 var server = app.listen(port, function () {
     console.log("app running on port.", server.address().port);
-    console.log(mongoose.connection.readyState);
+    //console.log(mongoose.connection.readyState);
 });
