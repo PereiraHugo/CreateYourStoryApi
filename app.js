@@ -16,9 +16,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Connect to DB
-//var configDB = require('./config/database.js');
+var config = require('./config.js');
 
-mongoose.connect("mongodb://127.0.0.1:27017/Words");
+mongoose.connect("mongodb+srv://"+ config.mongo_user +":"+ config.mongo_pwd +"@apipereira-v9you.gcp.mongodb.net/Words?retryWrites=true")
 const db = mongoose.connection;
 require('./models/englishModel');
 
