@@ -2,7 +2,9 @@ const express = require("express");
 const app = express();
 const querystring = require('querystring');
 const mongoose = require('mongoose')
+var cors = require('cors')
 
+app.use(cors())
 
 var routes = require("./routes/routes.js");
 
